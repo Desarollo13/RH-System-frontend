@@ -2,7 +2,7 @@
   <section class="container-fluid min-vh-100 d-flex justify-content-center align-items-center text-dark">
     <div class="card shadow-lg rounded-4 overflow-hidden border border-3 border-dark" style="background-color: beige; max-width: 1000px; width: 100%;">
       <div class="row g-0">
-        <!-- Lado izquierdo con logo y texto (Imagen más grande) -->
+        <!-- Lado izquierdo con logo y texto -->
         <div class="col-md-6 d-flex flex-column justify-content-center align-items-start p-5 bg-white text-start">
           <img src="@/assets/img/rh-sinFondo.png" alt="Logo RH" class="img-fluid mb-4" style="max-width: 250px;">
           <h1 class="fw-semibold mb-2" style="font-size: 2.5rem; font-family: 'Segoe UI', sans-serif; color: #1a1a1a;">
@@ -13,7 +13,6 @@
 
         <!-- Lado derecho con formulario -->
         <div class="col-md-6 d-flex flex-column justify-content-center p-5 bg-white">
-          <!-- Título centrado de "Ingresa tus credenciales" -->
           <p class="mb-4 fw-bold text-dark text-center" style="font-size: 1.25rem;">Ingresa tus credenciales</p>
 
           <div class="mb-3">
@@ -31,7 +30,15 @@
             </div>
           </div>
 
-          <button class="w-100 rounded-pill fw-bold mt-2" style="background-color: #007bff; color: white; border: none; outline: none;">Iniciar Sesión</button>
+          <!-- Aquí es donde haces el emit -->
+          <button
+            @click="login"
+            class="w-100 rounded-pill fw-bold mt-2"
+            style="background-color: #007bff; color: white; border: none; outline: none;"
+          >
+            Iniciar Sesión
+          </button>
+
           <div class="small text-center mt-3">
             <span class="text-muted">¿Olvidaste tu usuario o contraseña?</span><br>
             <a href="#" class="text-primary text-decoration-none">Recuperar usuario y/o contraseña</a>
@@ -49,8 +56,14 @@ import { ref } from 'vue'
 
 const showPassword = ref(false)
 
+const emit = defineEmits(['logged-in']) // Declaras el evento que se va a emitir
+
 const togglePassword = () => {
   showPassword.value = !showPassword.value
+}
+
+const login = () => {
+  emit('logged-in') // Aquí disparas el evento para avisarle al App.vue que ya inició sesión
 }
 </script>
 
