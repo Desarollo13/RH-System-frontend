@@ -27,7 +27,7 @@ import FooterComponent from '@/components/Footer.vue'
 const showSidebar = ref(true)
 
 function toggleSidebar() {
-  console.log("Toggling Sidebar:", !showSidebar.value)  <!-- Agregado para depurar -->
+  console.log("Toggling Sidebar:", !showSidebar.value)
   showSidebar.value = !showSidebar.value
 }
 </script>
