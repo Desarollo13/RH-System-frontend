@@ -1,11 +1,8 @@
 <template>
   <div class="dashboard-container">
-    <aside class="sidebar">
-      <SidebarMenu />
-    </aside>
+
 
     <div class="main-content">
-      <HeaderNav />
 
       <div class="dashboard-content">
         <h1 class="welcome">Bienvenido al Dashboard 🎯</h1>
@@ -57,25 +54,15 @@
 </template>
 
 <script setup>
-import SidebarMenu from '../../components/SidebarMenu.vue'
-import HeaderNav from '../../components/HeaderNav.vue'
 import ChartBar from '../../components/ChartBar.vue'
 import ChartPie from '../../components/ChartPie.vue'
 import ChartLine from '../../components/ChartLine.vue'
-import Footer from '../../components/Footer.vue'
 </script>
 
 <style scoped>
 .dashboard-container {
   display: flex;
   min-height: 100vh;
-}
-
-.sidebar {
-  width: 250px;
-  background: #ffffff;
-  border-right: 1px solid #e5e7eb;
-  padding: 1rem;
 }
 
 .main-content {

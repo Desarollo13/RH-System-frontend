@@ -8,12 +8,9 @@
 
       <!-- Logo y botón menú -->
       <div class="d-flex align-items-center">
-        <button class="btn btn-light position-relative">
+        <button @click="$emit('toggle-sidebar')"class="btn btn-light">
           <i class="bi bi-list" style="font-size: 30px;"></i>
         </button>
-<!--        <button @click="toggleMenu" class="bi bi-menu-down">-->
-<!--          <i class="fa fa-bars"></i>-->
-<!--        </button>-->
         <router-link to="/" class="navbar-brand d-flex align-items-center">
           <img src="@/assets/img/rh-sinFondo.png" alt="logo" height="60" class="d-inline-block align-text-top" />
         </router-link>
