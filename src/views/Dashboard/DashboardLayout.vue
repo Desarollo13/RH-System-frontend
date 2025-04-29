@@ -1,11 +1,12 @@
 <template>
   <div class="dashboard-container">
-    <aside class="sidebar">
+    <!-- Sidebar con visibilidad dinámica -->
+    <aside :class="['sidebar', { hidden: !showSidebar }]">
       <SidebarMenu />
     </aside>
 
     <div class="main-content">
-      <HeaderNav />
+      <HeaderNav @toggle-sidebar="toggleSidebar" />
 
       <div class="dashboard-content">
         <h1 class="welcome">Bienvenido al Dashboard 🎯</h1>
@@ -35,7 +36,7 @@
         <div class="charts-grid">
           <div class="chart-card">
             <h3>Estados de Contrato 🥧</h3>
-            <ChartPie/>
+            <ChartPie />
           </div>
 
           <div class="chart-card h-100">
@@ -49,20 +50,25 @@
         </div>
       </div>
 
-      <!-- Footer colocado aquí -->
       <Footer />
-
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import SidebarMenu from '../../components/SidebarMenu.vue'
 import HeaderNav from '../../components/HeaderNav.vue'
 import ChartBar from '../../components/ChartBar.vue'
 import ChartPie from '../../components/ChartPie.vue'
 import ChartLine from '../../components/ChartLine.vue'
 import Footer from '../../components/Footer.vue'
+
+const showSidebar = ref(true)
+
+function toggleSidebar() {
+  showSidebar.value = !showSidebar.value
+}
 </script>
 
 <style scoped>
@@ -75,18 +81,27 @@ import Footer from '../../components/Footer.vue'
   width: 250px;
   background: #ffffff;
   border-right: 1px solid #e5e7eb;
-  padding: 1rem;
+  padding: .2rem;
+  transition: all 0.1s ease;
+}
+
+/* Oculta el sidebar pero mantiene el flujo del layout */
+.sidebar.hidden {
+  width: 0;
+  overflow: hidden;
+  padding: 0;
+  border: none;
 }
 
 .main-content {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* para que el footer esté abajo */
+  justify-content: space-between;
 }
 
 .dashboard-content {
-  flex: 1; /* ocupa el espacio disponible */
+  flex: 1;
 }
 
 .card-grid {
@@ -144,7 +159,7 @@ import Footer from '../../components/Footer.vue'
   background: #ffffff;
   padding: 1rem;
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
