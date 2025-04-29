@@ -31,20 +31,27 @@
             <p class="card-number">10</p>
           </div>
         </div>
-        <div class="charts-grid ">
-        <div class="chart-card">
-          <h3>Estados de Contrato 🥧</h3>
-          <ChartPie/>
-        </div>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>Estados de Contrato 🥧</h3>
+            <ChartPie/>
+          </div>
+
           <div class="chart-card h-100">
             <h3>Resumen Mensual 📈</h3>
             <ChartLine />
           </div>
-            <div class="chart-card h-100">
-        <ChartBar />
-        </div>
+
+          <div class="chart-card h-100">
+            <ChartBar />
+          </div>
         </div>
       </div>
+
+      <!-- Footer colocado aquí -->
+      <Footer />
+
     </div>
   </div>
 </template>
@@ -55,6 +62,7 @@ import HeaderNav from '../../components/HeaderNav.vue'
 import ChartBar from '../../components/ChartBar.vue'
 import ChartPie from '../../components/ChartPie.vue'
 import ChartLine from '../../components/ChartLine.vue'
+import Footer from '../../components/Footer.vue'
 </script>
 
 <style scoped>
@@ -74,6 +82,11 @@ import ChartLine from '../../components/ChartLine.vue'
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* para que el footer esté abajo */
+}
+
+.dashboard-content {
+  flex: 1; /* ocupa el espacio disponible */
 }
 
 .card-grid {
@@ -141,9 +154,8 @@ import ChartLine from '../../components/ChartLine.vue'
   animation: fadeInUp 0.8s forwards;
 }
 
-
 .chart-card:hover {
-  transform: scale(2);
+  transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
