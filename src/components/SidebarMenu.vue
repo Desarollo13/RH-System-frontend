@@ -48,6 +48,9 @@
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Seguimiento Tickets</a></li>
         </ul>
       </div>
+      <div>
+        <button @click="selectModule('Usuarios')"class="btn btn-outline-info btn-lg w-full">Usuarios</button>
+      </div>
     </nav>
   </aside>
 </template>
@@ -58,6 +61,7 @@ const emit = defineEmits(['select-module'])
 function selectModule(moduleName) {
   emit('select-module', moduleName)
 }
+
 
 </script>
 
