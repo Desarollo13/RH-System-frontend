@@ -29,6 +29,7 @@ const currentYear = new Date().getFullYear();
   border-top-right-radius: 2px;
   padding: 0.6px 2px;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+ 
 }
 .social-icons a {
   font-size: 1.2rem;

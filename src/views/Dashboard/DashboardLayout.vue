@@ -122,6 +122,11 @@
           </div>
 
         </div>
+        <div v-if="currentModule === 'Usuarios'">
+          <div class="flex-wrapper">
+            <UserPage />
+          </div>
+        </div> 
       <Footer />
     </div>
   </div>
@@ -136,6 +141,7 @@ import ChartBar from '../../components/ChartBar.vue'
 import ChartPie from '../../components/ChartPie.vue'
 import ChartLine from '../../components/ChartLine.vue'
 import Footer from '../../components/Footer.vue'
+import UserPage from '@/views/User/UserPage.vue';
 
 const showSidebar = ref(true)
 const currentModule = ref('dashboard')
@@ -251,6 +257,16 @@ function changeModule(moduleName) {
 .chart-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+
+.flex-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;     
+  width: 80%;              
+  margin: 0 auto;         
+height: 100%;
 }
 
 /* Animación Fade In + Up */
