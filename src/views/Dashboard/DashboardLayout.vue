@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <!-- Sidebar con visibilidad dinámica -->
     <aside :class="['sidebar', { hidden: !showSidebar }]">
-      <SidebarMenu />
+      <SidebarMenu @select-module="changeModule"/>
     </aside>
 
     <div class="main-content">
@@ -11,47 +11,120 @@
       <div class="dashboard-content">
         <h1 class="welcome">Bienvenido al Dashboard 🎯</h1>
 
+        <div v-if="currentModule === 'dashboard'">
+          <!-- Dashboard inicial -->
+            <div class="card-grid">
+              <div class="summary-card accepted">
+                <h3>Contratos Aceptados</h3>
+                <p class="card-number">23</p>
+              </div>
+
+              <div class="summary-card in-contract">
+                <h3>En Contrato</h3>
+                <p class="card-number">15</p>
+              </div>
+
+              <div class="summary-card expiring">
+                <h3>Por Expirar</h3>
+                <p class="card-number">4</p>
+              </div>
+
+              <div class="summary-card finished">
+                <h3>Finalizados</h3>
+                <p class="card-number">10</p>
+              </div>
+            </div>
+
+
+          <div class="charts-grid">
+            <div class="chart-card">
+              <h3>Estados de Contrato 🥧</h3>
+              <ChartPie />
+            </div>
+            <div class="chart-card h-100">
+              <h3>Resumen Mensual 📈</h3>
+              <ChartLine />
+            </div>
+            <div class="chart-card h-100">
+              <ChartBar />
+            </div>
+          </div>
+        </div>
+
         <div class="card-grid">
-          <div class="summary-card accepted">
+          <div v-if="currentModule === 'contrataciones'" class="summary-card accepted">
             <h3>Contratos Aceptados</h3>
             <p class="card-number">23</p>
           </div>
 
-          <div class="summary-card in-contract">
-            <h3>En Contrato</h3>
+          <div v-if="currentModule === 'Empleados'" class="summary-card in-contract">
+            <h3>Nuevos Ingresos</h3>
             <p class="card-number">15</p>
           </div>
 
-          <div class="summary-card expiring">
-            <h3>Por Expirar</h3>
+          <div v-if="currentModule === 'Evaluaciones'" class="summary-card expiring">
+            <h3>Vacantes a Cubrir</h3>
             <p class="card-number">4</p>
           </div>
 
-          <div class="summary-card finished">
-            <h3>Finalizados</h3>
+          <div v-if="currentModule === 'Nomina'" class="summary-card finished">
+            <h3>Ingresos y Egresos</h3>
+            <p class="card-number">10</p>
+          </div>
+
+          <div v-if="currentModule === 'Tickets'" class="summary-card finished">
+            <h3>Actividades</h3>
             <p class="card-number">10</p>
           </div>
         </div>
 
         <div class="charts-grid">
-          <div class="chart-card">
+          <div v-if="currentModule === 'contrataciones'" class="chart-card">
             <h3>Estados de Contrato 🥧</h3>
             <ChartPie />
           </div>
+          <div v-if="currentModule === 'Empleados'" class="chart-card">
+            <h3>Nuevos Ingresos🥧</h3>
+            <ChartPie />
+          </div>
+          <div v-if="currentModule === 'Evaluaciones'" class="chart-card">
+            <h3>Vacantes a Cubrir 🥧</h3>
+            <ChartPie />
+          </div>
+          <div v-if="currentModule === 'Nomina'" class="chart-card">
+            <h3>Ingresos y Egresos 🥧</h3>
+            <ChartPie />
+          </div>
+          <div v-if="currentModule === 'Tickets'" class="chart-card">
+            <h3>Actividades 🥧</h3>
+            <ChartPie />
+          </div>
 
-          <div class="chart-card h-100">
+          <div v-if="currentModule === 'contrataciones'" class="chart-card h-100">
+            <h3>Resumen Mensual 📈</h3>
+            <ChartLine />
+          </div>
+          <div v-if="currentModule === 'Empleados'" class="chart-card h-100">
+            <h3>Resumen Mensual 📈</h3>
+            <ChartLine />
+          </div>
+          <div v-if="currentModule === 'Evaluaciones'" class="chart-card h-100">
+            <h3>Resumen Mensual 📈</h3>
+            <ChartLine />
+          </div>
+          <div v-if="currentModule === 'Nomina'" class="chart-card h-100">
+            <h3>Resumen Mensual 📈</h3>
+            <ChartLine />
+          </div>
+          <div v-if="currentModule === 'Tickets'" class="chart-card h-100">
             <h3>Resumen Mensual 📈</h3>
             <ChartLine />
           </div>
 
-          <div class="chart-card h-100">
-            <ChartBar />
-          </div>
         </div>
-      </div>
-
       <Footer />
     </div>
+  </div>
   </div>
 </template>
 
@@ -65,9 +138,15 @@ import ChartLine from '../../components/ChartLine.vue'
 import Footer from '../../components/Footer.vue'
 
 const showSidebar = ref(true)
+const currentModule = ref('dashboard')
+
 
 function toggleSidebar() {
   showSidebar.value = !showSidebar.value
+}
+
+function changeModule(moduleName) {
+  currentModule.value = moduleName
 }
 </script>
 

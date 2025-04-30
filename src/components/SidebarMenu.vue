@@ -6,7 +6,7 @@
 
     <nav class="space-y-6">
       <div>
-        <button class="btn btn-outline-info btn-lg w-full">Contrataciones</button>
+        <button @click="selectModule('contrataciones')" class="btn btn-outline-info btn-lg w-full">Contrataciones</button>
         <ul class="space-y-1 pl-4">
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Nuevos Ingresos</a></li>
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Vacantes a Cubrir</a></li>
@@ -17,7 +17,7 @@
 
 
       <div>
-        <button class="btn btn-outline-info btn-lg w-full">Empleados</button>
+        <button @click="selectModule('Empleados')" class="btn btn-outline-info btn-lg w-full">Empleados</button>
         <ul class="space-y-1 pl-4">
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Nuevos Ingresos</a></li>
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Capacitaciones</a></li>
@@ -26,7 +26,7 @@
       </div>
 
       <div>
-        <button class="btn btn-outline-info btn-lg w-full">Evaluaciones</button>
+        <button @click="selectModule('Evaluaciones')"class="btn btn-outline-info btn-lg w-full">Evaluaciones</button>
         <ul class="space-y-1 pl-4">
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Solicitudes de Aumento</a></li>
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Rendimiento</a></li>
@@ -34,7 +34,7 @@
       </div>
 
       <div>
-        <button class="btn btn-outline-info btn-lg w-full">Nómina</button>
+        <button @click="selectModule('Nomina')"class="btn btn-outline-info btn-lg w-full">Nómina</button>
         <ul class="space-y-1 pl-4">
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Empleados</a></li>
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Retenciones</a></li>
@@ -43,7 +43,7 @@
       </div>
 
       <div>
-        <button class="btn btn-outline-info btn-lg w-full">Tickets</button>
+        <button @click="selectModule('Tickets')"class="btn btn-outline-info btn-lg w-full">Tickets</button>
         <ul class="space-y-1 pl-4">
           <li><a href="#" class="bi bi-star text-gray-700 hover:text-blue-500"> Seguimiento Tickets</a></li>
         </ul>
@@ -53,6 +53,11 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['select-module'])
+
+function selectModule(moduleName) {
+  emit('select-module', moduleName)
+}
 
 </script>
 
